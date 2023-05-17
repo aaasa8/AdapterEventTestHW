@@ -1,14 +1,16 @@
 package ddwu.com.mobile.adaptereventtest
-
+//이름 FoodDao로 변경하기
 class SubjectDao() {
-    val dataList = ArrayList<String>()
+    val foods = ArrayList<FoodDto>()
 
     init{
-        dataList.add("모바일소프트웨어")
-        dataList.add("웹서비스")
-        dataList.add("네트워크")
-        dataList.add("시스템프로그래밍")
-        dataList.add("시스템/네트워크보안")
+        foods.add(FoodDto(R.drawble.food01, "치즈", 10))
+        foods.add(FoodDto(R.drawble.food02, "치킨", 5))
+        foods.add(FoodDto(R.drawble.food03, "도넛", 15))
+        foods.add(FoodDto(R.drawble.food04, "사과", 20))
+        foods.add(FoodDto(R.drawble.food05, "핫도그", 3))
+        foods.add(FoodDto(R.drawble.food06, "파스타", 5))
+        foods.add(FoodDto(R.drawble.food07, "아이스크림", 15))
     }
 }
 
