@@ -13,9 +13,22 @@ import androidx.recyclerview.widget.RecyclerView
 class FoodAdapter (val foods : ArrayList<FoodDto>)
 	:RecyclerView.Adapter<BindingFoodAdapter.FooodViewHolder>() {
 
+
+		interface OnItemClickListener {
+			fun onItemClick(view: View, position: Int)
+		}
+
+		lateinit var listener : OnItemClickListener
+
+		fun setOnItemClickListener(listener: OnItemClikckListener){
+			this.listener = listener
+		}
+
+
+
    // RecyclerView 에 표시할 전체 뷰의 개수 == 원본 데이터의 개수, 데이터의 개수 확인이 필요할 때 호출
     override fun getItemCount(): Int = foods.size
-
+		
     // 각 항목의 뷰를 보관하는 Holder, 각 item view의 view holder 생성 시 호출
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val itemView = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -23,7 +36,13 @@ class FoodAdapter (val foods : ArrayList<FoodDto>)
     }
 
     // 항목의 뷰를 생성한 후 멤버변수로 보관하는 ViewHolder
-    class FoodViewHolder(val itemBinding: ListItemBinding) : RecyclerView.ViewHolder(itemBinding.root)
+    class FoodViewHolder(val itemBinding: ListItemBinding, listener: OnItemClickListener) : RecyclerView.ViewHolder(itemBinding.root){
+			init{
+				itemBinding.root.setOnClickListener{
+					listener.onItemClick(itemBinding.root, adapterPosition)
+				}
+			}
+		}
            
 
 
