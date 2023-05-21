@@ -25,5 +25,12 @@ class MainActivity : AppCompatActivity() {
         val adapter = MyAdapter(this, R.layout.list_view, dataList)
         binding.recyclerView.adapter = adapter
 
+				val listener = object : BindingFoodAdapter.OnItemClickListener{
+					override fun onItemClick(view: View, position: Int){
+						Toast.makeText(this@MainActivity, "${foods[position]}, Toast.LENGTH_SHORT).show()
+					}
+				}
+				adapter.setOnItemClickListener(listener)
+
     }
 }
