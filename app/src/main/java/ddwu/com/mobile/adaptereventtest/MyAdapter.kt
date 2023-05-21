@@ -23,19 +23,9 @@ class FoodAdapter (val foods : ArrayList<FoodDto>)
     }
 
     // 항목의 뷰를 생성한 후 멤버변수로 보관하는 ViewHolder
-    class FoodViewHolder(val itemBinding: ListItemBinding, foods: ArrayList<FoodDto>) : RecyclerView.ViewHolder(itemBinding.root) {
-        val tvText : TextView = view.findViewById(R.id.tvText)
-        init {
-					itemBinding.root.setOnClickListener{
-					}
-            // adapter의 notifyDatasetChanged 및 adapter의 멤버변수 list 사용하여 이벤트 처리
-            view.setOnLongClickListener {
-                adapter.list.removeAt(adapterPosition)
-                adapter.notifyDataSetChanged()
-                true
-            }
-        }
-    }
+    class FoodViewHolder(val itemBinding: ListItemBinding) : RecyclerView.ViewHolder(itemBinding.root)
+           
+
 
     // Holder 에 보관중인 View 에 원본 데이터 연결, 각 item view의 항목에 데이터 결합 시 호출
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
