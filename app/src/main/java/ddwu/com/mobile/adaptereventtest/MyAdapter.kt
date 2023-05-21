@@ -32,7 +32,7 @@ class FoodAdapter (val foods : ArrayList<FoodDto>)
     // 각 항목의 뷰를 보관하는 Holder, 각 item view의 view holder 생성 시 호출
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoodViewHolder {
         val itemView = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FoodViewHolder(itemBinding)
+        return FoodViewHolder(itemBinding, listener)
     }
 
     // 항목의 뷰를 생성한 후 멤버변수로 보관하는 ViewHolder
